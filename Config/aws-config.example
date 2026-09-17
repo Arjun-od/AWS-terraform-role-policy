@@ -1,0 +1,54 @@
+# ============================================================
+# AWS CLI Configuration Example
+# ============================================================
+#
+# This file is an example only.
+#
+# It does NOT contain AWS access keys or secret keys.
+#
+# Copy the relevant configuration into:
+#
+#     ~/.aws/config
+#
+# The permanent credentials for the "admin" profile should
+# remain in:
+#
+#     ~/.aws/credentials
+#
+# ============================================================
+
+
+# ============================================================
+# Administrative Profile
+# ============================================================
+#
+# This profile represents the administrative IAM user.
+#
+# The credentials for this profile are stored separately in
+# ~/.aws/credentials.
+#
+# The administrative profile is used to perform IAM setup
+# and to act as the source profile for role assumption.
+#
+
+[profile admin]
+region = us-east-1
+output = json
+
+
+# ============================================================
+# Terraform Execution Profile
+# ============================================================
+#
+# This profile does NOT contain permanent credentials.
+#
+# AWS CLI uses the "admin" profile as the source identity,
+# requests an STS AssumeRole session, and then uses the
+# temporary credentials issued for TerraformExecutionRole.
+#
+
+[profile terraform]
+role_arn = arn:aws:iam::ACCOUNT_ID:role/TerraformExecutionRole
+source_profile = admin
+region = us-east-1
+output = json

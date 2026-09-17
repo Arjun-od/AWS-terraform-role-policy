@@ -1,0 +1,17 @@
+# SSH Keys/
+*.pem
+*id_rsa
+*id_ed25519
+*.key
+*.p12
+*.pfx
+
+# AWS credentials
+.aws/
+**/.aws/
+credentials
+config
+
+# OS files
+.DS_Store
+Thumbs.db
